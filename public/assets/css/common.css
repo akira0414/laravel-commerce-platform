@@ -1,0 +1,24 @@
+:root {
+    color-scheme: light;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "Microsoft JhengHei", system-ui, sans-serif;
+}
+
+button, input, select, textarea {
+    font: inherit;
+}
+
+.rounded-pill {
+    border-radius: 9999px !important;
+}

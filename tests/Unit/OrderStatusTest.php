@@ -1,7 +1,10 @@
 <?php
+
 namespace Tests\Unit;
+
 use App\Enums\OrderStatus;
 use PHPUnit\Framework\TestCase;
+
 final class OrderStatusTest extends TestCase
 {
     public function test_only_explicit_transitions_are_allowed(): void

@@ -83,3 +83,18 @@ Supported topics: `payment.succeeded`, `payment.failed`.
 Supported topics: `shipment.ready`, `shipment.in_transit`, `shipment.delivered`, `shipment.exception`.
 
 All valid webhook requests return `202 {"received":true}`. Processing happens asynchronously; provider retries are safe when the same event ID is used.
+# 模擬付款 API
+
+`POST /api/v1/simulator/payments`
+
+此端點只在 `local` 與 `testing` 環境開放，會產生正式格式的 HMAC Webhook，經過 inbox、Queue handler 與付款交易流程。
+
+```json
+{
+  "order_number": "ORD-20260804-XXXXXXXX",
+  "method": "credit_card",
+  "outcome": "success"
+}
+```
+
+付款方式可使用 `credit_card`、`bank_transfer`、`mobile_payment`；結果可使用 `success` 或 `failed`。
