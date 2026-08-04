@@ -1,0 +1,12 @@
+services:
+  app:
+    build: .
+    ports: ["8000:8000"]
+    environment: { QUEUE_CONNECTION: database }
+    volumes: ["commerce-storage:/app/storage", "commerce-db:/app/database"]
+  worker:
+    build: .
+    command: php artisan queue:work --tries=5 --backoff=5
+    environment: { QUEUE_CONNECTION: database }
+    volumes: ["commerce-storage:/app/storage", "commerce-db:/app/database"]
+volumes: { commerce-storage: {}, commerce-db: {} }

@@ -1,0 +1,17 @@
+<?php
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+return new class extends Migration {
+    public function up(): void
+    {
+        Schema::create('products', function (Blueprint $table): void { $table->id(); $table->string('sku')->unique(); $table->string('name'); $table->unsignedBigInteger('price'); $table->boolean('is_active')->default(true); $table->timestamps(); });
+        Schema::create('inventories', function (Blueprint $table): void { $table->id(); $table->foreignId('product_id')->unique()->constrained()->cascadeOnDelete(); $table->unsignedInteger('on_hand')->default(0); $table->unsignedInteger('reserved')->default(0); $table->timestamps(); });
+        Schema::create('orders', function (Blueprint $table): void { $table->id(); $table->string('number')->unique(); $table->string('status')->index(); $table->char('currency', 3); $table->unsignedBigInteger('subtotal'); $table->unsignedBigInteger('shipping_fee')->default(0); $table->unsignedBigInteger('total'); $table->string('customer_email')->index(); $table->json('shipping_address'); $table->timestamp('expires_at')->nullable()->index(); $table->timestamp('paid_at')->nullable(); $table->timestamps(); });
+        Schema::create('order_items', function (Blueprint $table): void { $table->id(); $table->foreignId('order_id')->constrained()->cascadeOnDelete(); $table->foreignId('product_id')->constrained()->restrictOnDelete(); $table->string('sku'); $table->string('name'); $table->unsignedBigInteger('unit_price'); $table->unsignedInteger('quantity'); $table->unsignedBigInteger('line_total'); $table->timestamps(); $table->unique(['order_id', 'product_id']); });
+        Schema::create('payments', function (Blueprint $table): void { $table->id(); $table->foreignId('order_id')->constrained()->cascadeOnDelete(); $table->string('provider'); $table->string('provider_payment_id'); $table->string('status')->index(); $table->unsignedBigInteger('amount'); $table->char('currency', 3); $table->string('failure_reason')->nullable(); $table->timestamp('paid_at')->nullable(); $table->longText('raw_payload')->nullable(); $table->timestamps(); $table->unique(['provider', 'provider_payment_id']); });
+        Schema::create('shipments', function (Blueprint $table): void { $table->id(); $table->foreignId('order_id')->constrained()->cascadeOnDelete(); $table->string('provider'); $table->string('provider_shipment_id'); $table->string('tracking_number')->nullable()->index(); $table->string('status')->index(); $table->timestamp('shipped_at')->nullable(); $table->timestamp('delivered_at')->nullable(); $table->longText('raw_payload')->nullable(); $table->timestamps(); $table->unique(['provider', 'provider_shipment_id']); });
+        Schema::create('webhook_events', function (Blueprint $table): void { $table->id(); $table->string('event_id'); $table->string('provider'); $table->string('topic')->index(); $table->char('payload_hash', 64); $table->longText('payload'); $table->string('status')->index(); $table->unsignedSmallInteger('attempts')->default(0); $table->timestamp('processed_at')->nullable(); $table->text('last_error')->nullable(); $table->timestamps(); $table->unique(['provider', 'event_id']); });
+    }
+    public function down(): void { Schema::dropIfExists('webhook_events'); Schema::dropIfExists('shipments'); Schema::dropIfExists('payments'); Schema::dropIfExists('order_items'); Schema::dropIfExists('orders'); Schema::dropIfExists('inventories'); Schema::dropIfExists('products'); }
+};
