@@ -97,18 +97,6 @@ composer test
 
 目前測試涵蓋狀態轉換、Webhook 簽章、庫存保留／不足，以及 Webhook 冪等接收。GitHub Actions 會在 push 與 pull request 執行 Pint 與 PHPUnit。
 
-## 面試時可以延伸討論
-
-- 為何採 inbox + queue，而不是在 Webhook request 中直接處理。
-- DB row lock、optimistic lock、Redis distributed lock 各自的邊界。
-- payment succeeded 和 order expiration 同時發生時，如何由同一張 order row lock 序列化結果。
-- 真實金流 refund、chargeback，以及物流 partial shipment 的建模方式。
-- Outbox pattern、OpenTelemetry、dead-letter queue、provider adapter 的下一步。
-
-## 安全提醒
-
-此專案只示範整合邊界，不包含真實卡號資料。正式環境應將 secret 放入 secret manager、強制 TLS、限制來源、使用 provider 各自的簽章規格，並依 PCI DSS 與個資規範處理資料。
-
 ## License
 
 MIT
