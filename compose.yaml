@@ -2,7 +2,7 @@ services:
   app:
     build: .
     ports: ["8000:8000"]
-    environment: { QUEUE_CONNECTION: database }
+    environment: { QUEUE_CONNECTION: database, PORT: 8000 }
     volumes: ["commerce-storage:/app/storage", "commerce-db:/app/database"]
   worker:
     build: .

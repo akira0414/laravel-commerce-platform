@@ -22,8 +22,8 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction \
     && php artisan key:generate \
     && php artisan migrate --seed --force
 
-EXPOSE 8000
+EXPOSE 10000
 
 # Render 會透過 PORT 環境變數指定公開服務的監聽埠；
-# 本機 Docker 沒有提供 PORT 時則維持使用 8000。
-CMD ["sh", "-c", "php artisan serve --host=0.0.0.0 --port=${PORT:-8000}"]
+# 沒有提供 PORT 時使用 Render Web Service 的預設埠 10000。
+CMD ["sh", "-c", "php artisan serve --host=0.0.0.0 --port=${PORT:-10000}"]
