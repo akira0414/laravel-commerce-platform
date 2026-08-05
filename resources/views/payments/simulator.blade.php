@@ -1,9 +1,11 @@
+
+
 @extends('layouts.app')
 @section('title', '模擬付款｜'.$order->number)
 @section('vendor-style')
 @endsection
 @section('page-style')
-<link rel="stylesheet" href="{{ asset('assets/css/pages/payment-simulator.css') }}">
+@vite('resources/scss/pages/payment-simulator.scss')
 @endsection
 @section('content')
 <nav class="wrap nav"><a href="/">質感選物</a><a href="/account">我的訂單</a></nav><main class="wrap layout"><section class="card"><h1>模擬付款中心</h1>
@@ -19,5 +21,9 @@
 @section('vendor-script')
 @endsection
 @section('page-script')
-<script src="{{ asset('assets/js/pages/payment-simulator.js') }}"></script>
+@vite('resources/js/script/pages/payment-simulator.js')
 @endsection
+
+
+
+

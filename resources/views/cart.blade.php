@@ -1,9 +1,11 @@
+
+
 @extends('layouts.app')
 @section('title', '購物車｜'.config('app.name'))
 @section('vendor-style')
 @endsection
 @section('page-style')
-<link rel="stylesheet" href="{{ asset('assets/css/pages/cart.css') }}">
+@vite('resources/scss/pages/cart.scss')
 @endsection
 @section('content')
 <nav class="wrap nav"><a class="brand" href="/">質感選物</a><a class="btn" href="/">繼續購物</a></nav>
@@ -12,5 +14,9 @@
 @section('vendor-script')
 @endsection
 @section('page-script')
-<script src="{{ asset('assets/js/pages/cart.js') }}"></script>
+@vite('resources/js/script/pages/cart.js')
 @endsection
+
+
+
+

@@ -1,9 +1,11 @@
+
+
 @extends('layouts.app')
 @section('title', '結帳付款｜'.config('app.name'))
 @section('vendor-style')
 @endsection
 @section('page-style')
-<link rel="stylesheet" href="{{ asset('assets/css/pages/checkout.css') }}">
+@vite('resources/scss/pages/checkout.scss')
 @endsection
 @section('content')
 <nav class="wrap nav"><a class="brand" href="/">質感選物</a><div class="steps"><span>1 購物車</span><span>›</span><b>2 結帳付款</b><span>›</span><span>3 訂單完成</span></div></nav>
@@ -12,5 +14,9 @@
 @section('vendor-script')
 @endsection
 @section('page-script')
-<script src="{{ asset('assets/js/pages/checkout.js') }}"></script>
+@vite('resources/js/script/pages/checkout.js')
 @endsection
+
+
+
+

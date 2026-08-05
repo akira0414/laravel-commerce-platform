@@ -1,3 +1,5 @@
+
+
 const money = value => 'NT$ ' + Math.round(value / 100).toLocaleString('zh-TW');
 let cart = JSON.parse(localStorage.getItem('commerce-cart') || '[]');
 
@@ -35,3 +37,7 @@ document.querySelectorAll('.add').forEach(button => {
 });
 
 renderCartCount();
+
+
+
+

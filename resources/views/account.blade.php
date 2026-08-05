@@ -1,3 +1,5 @@
+
+
 @extends('layouts.app')
 
 @section('title', '我的訂單｜'.config('app.name'))
@@ -6,7 +8,7 @@
 @endsection
 
 @section('page-style')
-<link rel="stylesheet" href="{{ asset('assets/css/pages/account.css') }}">
+@vite('resources/scss/pages/account.scss')
 @endsection
 
 @section('content')
@@ -118,5 +120,9 @@
 @endsection
 
 @section('page-script')
-<script src="{{ asset('assets/js/pages/account.js') }}"></script>
+@vite('resources/js/script/pages/account.js')
 @endsection
+
+
+
+

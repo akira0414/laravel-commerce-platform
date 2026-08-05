@@ -1,9 +1,11 @@
+
+
 @extends('layouts.app')
 @section('title', '商店管理後台')
 @section('vendor-style')
 @endsection
 @section('page-style')
-    <link rel="stylesheet" href="{{ asset('assets/css/pages/dashboard.css') }}">
+    @vite('resources/scss/pages/dashboard.scss')
 @endsection
 @section('content')
     <div class="shell">
@@ -240,5 +242,9 @@
 @section('vendor-script')
 @endsection
 @section('page-script')
-    <script src="{{ asset('assets/js/pages/dashboard.js') }}"></script>
+    @vite('resources/js/script/pages/dashboard.js')
 @endsection
+
+
+
+

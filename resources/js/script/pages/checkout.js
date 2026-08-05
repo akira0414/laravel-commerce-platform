@@ -1,3 +1,5 @@
+
+
 const cart = JSON.parse(localStorage.getItem('commerce-cart') || '[]');
 const money = value => 'NT$ ' + Math.round(value / 100).toLocaleString('zh-TW');
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[character]));
@@ -38,3 +40,7 @@ document.getElementById('checkout-form').addEventListener('submit', async event 
         button.textContent = '確認訂單並付款';
     }
 });
+
+
+
+

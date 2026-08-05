@@ -1,9 +1,11 @@
+
+
 @extends('layouts.app')
 @section('title', '質感選物')
 @section('vendor-style')
 @endsection
 @section('page-style')
-<link rel="stylesheet" href="{{ asset('assets/css/pages/storefront.css') }}">
+@vite('resources/scss/pages/storefront.scss')
 @endsection
 @section('content')
 <nav class="wrap nav">
@@ -32,5 +34,9 @@
 @section('vendor-script')
 @endsection
 @section('page-script')
-<script src="{{ asset('assets/js/pages/storefront.js') }}"></script>
+@vite('resources/js/script/pages/storefront.js')
 @endsection
+
+
+
+
