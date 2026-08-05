@@ -265,7 +265,7 @@ button {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1px;
-  margin: 24px 75px;
+  margin: 24px auto;
   background: var(--line);
   border: 1px solid var(--line);
   border-radius: 16px;
@@ -795,5 +795,4 @@ body.cart-open .drawer {
 .trust div {
   text-align: center;
 }
-
 
