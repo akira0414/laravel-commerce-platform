@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', config('app.name'))</title>
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
     @vite(['resources/scss/common.scss', 'resources/js/script/common.js'])
     @yield('vendor-style')
     @yield('page-style')
@@ -16,5 +17,4 @@
     @yield('page-script')
 </body>
 </html>
-
 
